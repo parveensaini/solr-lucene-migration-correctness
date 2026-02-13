@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.idea/
+
+# Solr runtime data (DO NOT COMMIT INDEX FILES)
+docker/solr5/core1/data/
+docker/solr8/core1/data/
+
+# Generated reports (keep canonical outputs only)
+reports/q_*.solr5.json
+reports/q_*.solr8.json
+reports/q_*.solr5.debug.json
+reports/q_*.solr8.debug.json

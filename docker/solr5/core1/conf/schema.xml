@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="core1" version="1.6">
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="0" positionIncrementGap="0" docValues="true"/>
+  <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <uniqueKey>id</uniqueKey>
+
+  <field name="id" type="string" indexed="true" stored="true" required="true"/>
+  <field name="title" type="text_en" indexed="true" stored="true"/>
+  <field name="body" type="text_en" indexed="true" stored="true"/>
+  <field name="brand" type="string" indexed="true" stored="true"/>
+  <field name="price" type="tfloat" indexed="true" stored="true"/>
+  <field name="in_stock" type="boolean" indexed="true" stored="true"/>
+  <field name="tags" type="string" indexed="true" stored="true" multiValued="true"/>
+
+  <copyField source="title" dest="body"/>
+</schema>
+

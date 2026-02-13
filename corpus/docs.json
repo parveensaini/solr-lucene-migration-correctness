@@ -1,0 +1,27 @@
+[
+  {"id":"1","title":"iPhone 20W USB-C Charger","body":"iphone fast charger 20w usb c compact wall adapter for phone","brand":"Anker","price":19.99,"in_stock":true,"tags":["iphone","charger","usb-c"]},
+  {"id":"2","title":"Apple 20W USB-C Power Adapter","body":"iphone fast charger 20w usb c wall adapter compact","brand":"Apple","price":29.00,"in_stock":true,"tags":["iphone","charger","usb-c"]},
+  {"id":"3","title":"Spigen iPhone Fast Charger","body":"fast charger for iphone usb c adapter 20w","brand":"Spigen","price":17.50,"in_stock":true,"tags":["iphone","charger","usb-c"]},
+  {"id":"4","title":"Basic iPhone Charger 5W","body":"iphone charger slow charger usb a 5w basic adapter","brand":"Generic","price":9.99,"in_stock":true,"tags":["iphone","charger","usb-a"]},
+
+  {"id":"5","title":"Android Fast Charger 30W","body":"android fast charger 30w usb c pd wall adapter","brand":"Anker","price":21.99,"in_stock":true,"tags":["android","charger","usb-c","pd"]},
+  {"id":"6","title":"USB-C Cable 1m","body":"usb c cable 1m fast charging cable for phone","brand":"Belkin","price":11.99,"in_stock":true,"tags":["cable","usb-c"]},
+
+  {"id":"7","title":"Fast Charger (Phrase Repeated)","body":"fast charger fast charger for iphone iphone fast charger 20w usb c","brand":"Anker","price":18.99,"in_stock":true,"tags":["iphone","charger","usb-c"]},
+  {"id":"8","title":"iPhone Charger (Very Long Body)","body":"iphone fast charger 20w usb c wall adapter plus extra long description with many extra filler words to change field length norms and reduce normalization impact in classic similarity scoring","brand":"Generic","price":15.99,"in_stock":true,"tags":["iphone","charger","usb-c"]},
+  {"id":"9","title":"iPhone Charger Out of Stock","body":"iphone fast charger 20w usb c wall adapter","brand":"Anker","price":16.99,"in_stock":false,"tags":["iphone","charger","usb-c"]},
+
+  {"id":"10","title":"Wireless Charger for iPhone","body":"wireless charger magsafe compatible charger for iphone","brand":"Apple","price":39.00,"in_stock":true,"tags":["iphone","charger","wireless","magsafe"]},
+  {"id":"11","title":"Wireless Charger Pad","body":"wireless charger pad fast charge for iphone and android","brand":"Anker","price":24.99,"in_stock":true,"tags":["iphone","android","charger","wireless"]},
+
+  {"id":"12","title":"Car Charger USB-C 20W","body":"car charger usb c fast charger for iphone 20w","brand":"Spigen","price":14.99,"in_stock":true,"tags":["iphone","charger","car","usb-c"]},
+  {"id":"13","title":"Car Charger USB-A","body":"car charger usb a basic charger for iphone","brand":"Generic","price":8.99,"in_stock":true,"tags":["iphone","charger","car","usb-a"]},
+
+  {"id":"14","title":"Laptop USB-C Charger 65W","body":"laptop usb c charger 65w power delivery adapter","brand":"Anker","price":35.99,"in_stock":true,"tags":["laptop","charger","usb-c","pd"]},
+  {"id":"15","title":"USB-C PD Charger 65W","body":"usb c power delivery charger 65w for laptop and phone fast charger","brand":"Belkin","price":41.99,"in_stock":true,"tags":["laptop","phone","charger","usb-c","pd"]},
+
+  {"id":"16","title":"iPhone Case","body":"iphone case slim protective case","brand":"Spigen","price":12.99,"in_stock":true,"tags":["iphone","case"]},
+  {"id":"17","title":"iPhone Screen Protector","body":"screen protector for iphone tempered glass","brand":"Spigen","price":7.99,"in_stock":true,"tags":["iphone","screen","protector"]},
+
+  {"id":"18","title":"USB-C Wall Adapter 20W","body":"fast charging usb c wall adapter 20w for phone charger","brand":"Generic","price":13.49,"in_stock":true,"tags":["charger","usb-c"]}
+]

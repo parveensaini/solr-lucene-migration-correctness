@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+  <!-- Force deterministic schema loading (no managed schema) -->
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
+  <luceneMatchVersion>5.5.4</luceneMatchVersion>
+
+  <requestHandler name="/select" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="wt">json</str>
+      <str name="df">body</str>
+      <str name="q.op">OR</str>
+      <int name="rows">10</int>
+      <!-- Stabilize tie breaks -->
+      <str name="sort">score desc,id asc</str>
+      <str name="fl">id,score</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/update" class="solr.UpdateRequestHandler"/>
+</config>
+

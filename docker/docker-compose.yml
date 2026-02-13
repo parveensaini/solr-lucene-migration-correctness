@@ -1,0 +1,35 @@
+services:
+  solr5:
+    image: solr:5.5.4
+    container_name: solr5
+    ports:
+      - "8985:8983"
+    volumes:
+      - ./solr5/core1:/opt/solr/server/solr/core1
+    command:
+      - bash
+      - -lc
+      - |
+        set -e
+        if [ ! -f /opt/solr/server/solr/core1/core.properties ]; then
+          echo "name=core1" > /opt/solr/server/solr/core1/core.properties
+        fi
+        exec /opt/solr/bin/solr -f
+
+  solr8:
+    image: solr:8.9.0
+    container_name: solr8
+    ports:
+      - "8988:8983"
+    volumes:
+      - ./solr8/core1:/var/solr/data/core1
+    command:
+      - bash
+      - -lc
+      - |
+        set -e
+        if [ ! -f /var/solr/data/core1/core.properties ]; then
+          echo "name=core1" > /var/solr/data/core1/core.properties
+        fi
+        exec /opt/solr/bin/solr -f
+

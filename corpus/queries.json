@@ -1,0 +1,96 @@
+[
+  {
+    "name": "q_basic",
+    "params": {
+      "defType": "edismax",
+      "q": "iphone charger",
+      "qf": "title^3 body^2 tags",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_phrase",
+    "params": {
+      "defType": "edismax",
+      "q": "\"fast charger\"",
+      "qf": "title^3 body^2",
+      "pf": "title^5 body^3",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_phrase_freq",
+    "params": {
+      "defType": "edismax",
+      "q": "\"fast charger\" iphone",
+      "qf": "title^3 body^2",
+      "pf": "title^5 body^3",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_usb_c",
+    "params": {
+      "defType": "edismax",
+      "q": "usb c charger 20w",
+      "qf": "title^3 body^2 tags",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_filter_instock",
+    "params": {
+      "defType": "edismax",
+      "q": "iphone charger",
+      "qf": "title^3 body^2 tags",
+      "fq": "in_stock:true",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_filter_price_range",
+    "params": {
+      "defType": "edismax",
+      "q": "iphone charger",
+      "qf": "title^3 body^2 tags",
+      "fq": "price:[10 TO 25]",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_brand_anker",
+    "params": {
+      "defType": "edismax",
+      "q": "iphone charger",
+      "qf": "title^3 body^2 tags",
+      "fq": "brand:Anker",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  },
+  {
+    "name": "q_near_tie_stress",
+    "params": {
+      "defType": "edismax",
+      "q": "iphone fast 20w usb c adapter",
+      "qf": "title^3 body^2",
+      "mm": "2<75%",
+      "rows": 10,
+      "fl": "id,score",
+      "sort": "score desc, id asc"
+    }
+  }
+]

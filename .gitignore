@@ -15,3 +15,14 @@ reports/q_*.solr5.json
 reports/q_*.solr8.json
 reports/q_*.solr5.debug.json
 reports/q_*.solr8.debug.json
+
+.idea/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# generated reports (keep only reports/sample committed)
+reports/*
+!reports/sample/
+!reports/sample/**

@@ -1,4 +1,17 @@
 # Solr / Lucene Migration Correctness Checklist  
+
+## Run the demo
+
+```bash
+bash scripts/demo.sh
+# Outputs:
+#   reports/report.md
+#   reports/summary.json
+```
+
+This is a *demo harness* to quantify behavior drift across Solr/Lucene major versions under controlled configs.
+It does not claim Lucene is "wrong"—only that behavior can differ and should be measured for migrations.
+
 ### For Ranking-Critical, ML-Driven, and Revenue-Sensitive Systems
 
 > **Audience**  

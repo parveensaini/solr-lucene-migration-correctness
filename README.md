@@ -5,8 +5,8 @@
 ```bash
 bash scripts/demo.sh
 # Outputs:
-#   reports/report.md
-#   reports/summary.json
+#   reports/sample/report.md
+#   reports/sample/summary.json
 ```
 
 This is a *demo harness* to quantify behavior drift across Solr/Lucene major versions under controlled configs.

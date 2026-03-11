@@ -345,7 +345,17 @@ Produce a written report capturing:
 This report is the *final artifact* of the migration.
 
 ---
+## Related Article
 
+This repository was created while diagnosing a Solr 5 to Solr 8 migration in a production ads retrieval system.
+
+The full story behind the migration, including the semantic drift issues, ML feature compatibility challenges, and response-path latency optimizations, is described in this article:
+
+**Unblocking a Failed Solr 5 to Solr 8 Migration in a Large-Scale Ads Retrieval System**
+
+https://dzone.com/articles/solr5-to-solr8-migration-ads-system
+
+---
 ## Key Takeaway
 
 > **Major Solr/Lucene upgrades fail not because of missing configuration, but because semantic and execution-path assumptions evolve independently of downstream systems.**  

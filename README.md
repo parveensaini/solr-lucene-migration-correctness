@@ -1,4 +1,5 @@
-# Solr / Lucene Migration Correctness Checklist  
+# Solr / Lucene Ranking Drift Validation Harness
+A simple harness to detect ranking drift during Solr / Lucene upgrades by comparing candidate overlap, rank movement, score drift, and explain output across versions.
 
 ## Run the demo
 
@@ -9,7 +10,7 @@ bash scripts/demo.sh
 #   reports/sample/summary.json
 ```
 
-This is a *demo harness* to quantify behavior drift across Solr/Lucene major versions under controlled configs.
+This is a demo harness to quantify behavior drift across Solr/Lucene major versions under controlled configs and make ranking differences observable before migration rollout.
 It does not claim Lucene is "wrong"—only that behavior can differ and should be measured for migrations.
 
 ### For Ranking-Critical, ML-Driven, and Revenue-Sensitive Systems
@@ -20,11 +21,30 @@ It does not claim Lucene is "wrong"—only that behavior can differ and should b
 > **Scope**  
 > Major version upgrades (e.g., Solr/Lucene 5 to 8) where *silent semantic drift and tail-latency regressions* are more dangerous than obvious failures.
 
-This checklist focuses on **correctness and semantic equivalence**, not just configuration or dependency upgrades.
+This approach focuses on **correctness and semantic equivalence**, not just configuration or dependency upgrades.
 
 ---
 
-## Why This Checklist Exists
+## Example drift signals from the sample report
+
+- `q_basic` → Jaccard(top10): `0.818`, candidate differences in top10, max normalized drift: `0.190`
+- `q_phrase_freq` → Jaccard(top10): `0.667`, max rank delta: `4`, max normalized drift: `0.335`
+- `q_brand_anker` → Jaccard(top10): `1.000`, no rank changes, but max normalized drift: `0.276`
+
+This is useful because migrations can preserve query success while still changing:
+- which documents appear in the candidate set,
+- how stable the ordering is,
+- and how relative score distributions behave.
+
+## Production Use
+
+This approach was used to validate a production migration from Solr 5 to Solr 8 in a large-scale ads retrieval system.
+
+The same methodology was later reused during a Solr 8 to Solr 9 upgrade.
+
+The goal is to provide a repeatable way to analyze ranking drift during major search infrastructure upgrades.
+
+## Why This Approach Exists
 
 Many Solr/Lucene migrations fail in production even when:
 - queries succeed,
@@ -363,3 +383,4 @@ https://dzone.com/articles/solr5-to-solr8-migration-ads-system
 
 ---
 
+This repository provides a practical and repeatable approach for detecting ranking drift during major Solr/Lucene upgrades.

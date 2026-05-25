@@ -15,6 +15,18 @@ make diff
 #   reports/combined_summary.md
 ```
 
+**Supported sample comparisons**
+
+This harness includes sample drift reports for:
+
+- Solr 5 → Solr 8
+- Solr 5 → Solr 9
+- Solr 8 → Solr 9
+
+The combined report is at `reports/sample/combined_summary.md`.
+
+**Interpretation:** In this sample corpus and configuration, the Solr 5 → 8 and Solr 5 → 9 comparisons show measurable candidate, rank, and score drift. The Solr 8 → 9 sample is stable under the same controlled setup. This illustrates why migration validation should be measured per version pair and configuration, rather than assumed from successful query execution alone.
+
 This is a demo harness to quantify behavior drift across Solr/Lucene major versions under controlled configs and make ranking differences observable before migration rollout.
 It does not claim Lucene is "wrong"—only that behavior can differ and should be measured for migrations.
 
@@ -51,6 +63,8 @@ This approach was used to validate a production migration from Solr 5 to Solr 8 
 The same methodology was later reused during a Solr 8 to Solr 9 upgrade.
 
 The goal is to provide a repeatable way to analyze ranking drift during major search infrastructure upgrades.
+
+The public harness includes sample reports for 5→8, 5→9, and 8→9 comparisons.
 
 ## Why This Approach Exists
 

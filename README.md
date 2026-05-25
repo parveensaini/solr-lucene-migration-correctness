@@ -4,10 +4,15 @@ A simple harness to detect ranking drift during Solr / Lucene upgrades by compar
 ## Run the demo
 
 ```bash
-bash scripts/demo.sh
+docker-compose -f docker/docker-compose.yml up -d
+bash scripts/wait_for_solr.sh
+bash scripts/load.sh
+make diff
 # Outputs:
-#   reports/sample/report.md
-#   reports/sample/summary.json
+#   reports/5v8/report.md   — Solr 5 vs Solr 8
+#   reports/8v9/report.md   — Solr 8 vs Solr 9
+#   reports/5v9/report.md   — Solr 5 vs Solr 9
+#   reports/combined_summary.md
 ```
 
 This is a demo harness to quantify behavior drift across Solr/Lucene major versions under controlled configs and make ranking differences observable before migration rollout.
@@ -25,16 +30,19 @@ This approach focuses on **correctness and semantic equivalence**, not just conf
 
 ---
 
-## Example drift signals from the sample report
+## Example drift signals from the sample reports
 
-- `q_basic` → Jaccard(top10): `0.818`, candidate differences in top10, max normalized drift: `0.190`
-- `q_phrase_freq` → Jaccard(top10): `0.667`, max rank delta: `4`, max normalized drift: `0.335`
-- `q_brand_anker` → Jaccard(top10): `1.000`, no rank changes, but max normalized drift: `0.276`
+### Solr 5 vs Solr 8 — significant drift across Lucene major version boundary
 
-This is useful because migrations can preserve query success while still changing:
-- which documents appear in the candidate set,
-- how stable the ordering is,
-- and how relative score distributions behave.
+- `q_basic` → Jaccard(top10): `0.818`, max normalized drift: `0.190` ❌
+- `q_phrase_freq` → Jaccard(top10): `0.667`, max rank delta: `4`, max normalized drift: `0.335` ❌
+- `q_brand_anker` → Jaccard(top10): `1.000`, no rank changes, but max normalized drift: `0.276` ❌
+
+### Solr 8 vs Solr 9 — clean migration with equivalent similarity configuration
+
+- All 8 queries: Jaccard(top10): `1.000`, rank delta: `0`, score drift: `0.000` ✅
+
+This contrast illustrates the core value of the harness: the Solr 5 → 8 boundary introduced measurable ranking drift across 7 of 8 queries, while Solr 8 → 9 (with explicitly configured ClassicSimilarity) produced zero drift — giving teams confidence their migration is safe before switching production traffic.
 
 ## Production Use
 

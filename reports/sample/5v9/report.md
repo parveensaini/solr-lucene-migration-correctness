@@ -8,9 +8,12 @@ Thresholds:
 - MAX_MAX_ABS_RANK_DELTA=4
 - MAX_MAX_ABS_NORM_DRIFT=0.15
 
+> **RBO** (Rank-Biased Overlap, p=0.90) measures top-weighted ranked-list agreement. Unlike Jaccard, which only measures set overlap, RBO penalizes changes near the top of the result list more heavily than changes near the bottom. A value of 1.0 means identical ranking.
+
 ## q_basic — FAIL ❌
 - Reason: max_abs_norm_drift 0.190 >= 0.15
 - Jaccard(top10): **0.818**
+- RBO(p=0.9): **0.9429**
 - Avg abs rank delta: **0.33** (max: 1, changes: 3)
 - Top score (SOLR5/SOLR9): **1.052679 / 4.578894**
 - Max abs normalized drift: **0.190**
@@ -99,6 +102,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_phrase — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **0.9588**
 - Avg abs rank delta: **0.67** (max: 3, changes: 2)
 - Top score (SOLR5/SOLR9): **1.877696 / 5.795289**
 - Max abs normalized drift: **0.103**
@@ -188,6 +192,7 @@ Explain snippets (top raw-drift docs):
 ## q_phrase_freq — FAIL ❌
 - Reason: max_abs_rank_delta 4 >= 4 (not near-tie; max_abs_norm_drift 0.335)
 - Jaccard(top10): **0.667**
+- RBO(p=0.9): **0.8522**
 - Avg abs rank delta: **1.12** (max: 4, changes: 5)
 - Top score (SOLR5/SOLR9): **2.059716 / 8.416111**
 - Max abs normalized drift: **0.335**
@@ -277,6 +282,7 @@ Explain snippets (top raw-drift docs):
 ## q_usb_c — FAIL ❌
 - Reason: max_abs_norm_drift 0.285 >= 0.15
 - Jaccard(top10): **0.818**
+- RBO(p=0.9): **0.9321**
 - Avg abs rank delta: **0.67** (max: 3, changes: 3)
 - Top score (SOLR5/SOLR9): **1.572243 / 9.730376**
 - Max abs normalized drift: **0.285**
@@ -366,6 +372,7 @@ Explain snippets (top raw-drift docs):
 ## q_filter_instock — FAIL ❌
 - Reason: max_abs_norm_drift 0.190 >= 0.15
 - Jaccard(top10): **0.818**
+- RBO(p=0.9): **0.9331**
 - Avg abs rank delta: **0.44** (max: 1, changes: 4)
 - Top score (SOLR5/SOLR9): **1.052679 / 4.578894**
 - Max abs normalized drift: **0.190**
@@ -455,6 +462,7 @@ Explain snippets (top raw-drift docs):
 ## q_filter_price_range — FAIL ❌
 - Reason: max_abs_norm_drift 0.405 >= 0.15
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **0.9694**
 - Avg abs rank delta: **0.60** (max: 3, changes: 4)
 - Top score (SOLR5/SOLR9): **1.052679 / 4.578894**
 - Max abs normalized drift: **0.405**
@@ -544,6 +552,7 @@ Explain snippets (top raw-drift docs):
 ## q_brand_anker — FAIL ❌
 - Reason: max_abs_norm_drift 0.276 >= 0.15
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR5/SOLR9): **0.921094 / 4.095487**
 - Max abs normalized drift: **0.276**
@@ -633,6 +642,7 @@ Explain snippets (top raw-drift docs):
 ## q_near_tie_stress — FAIL ❌
 - Reason: max_abs_norm_drift 0.158 >= 0.15
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **0.9000**
 - Avg abs rank delta: **0.22** (max: 1, changes: 2)
 - Top score (SOLR5/SOLR9): **1.454017 / 12.509465**
 - Max abs normalized drift: **0.158**

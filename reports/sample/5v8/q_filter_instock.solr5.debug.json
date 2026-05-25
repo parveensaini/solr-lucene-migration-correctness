@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 23
+    "QTime": 4
   },
   "response": {
     "numFound": 16,
@@ -79,7 +79,7 @@
       "in_stock:true"
     ],
     "timing": {
-      "time": 23.0,
+      "time": 4.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -108,9 +108,9 @@
         }
       },
       "process": {
-        "time": 22.0,
+        "time": 3.0,
         "query": {
-          "time": 0.0
+          "time": 1.0
         },
         "facet": {
           "time": 0.0
@@ -131,7 +131,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 21.0
+          "time": 2.0
         }
       }
     }

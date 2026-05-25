@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 45
+    "QTime": 3
   },
   "response": {
     "numFound": 10,
@@ -79,11 +79,11 @@
       "price:[10.0 TO 25.0]"
     ],
     "timing": {
-      "time": 45.0,
+      "time": 3.0,
       "prepare": {
-        "time": 1.0,
+        "time": 0.0,
         "query": {
-          "time": 1.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -108,9 +108,9 @@
         }
       },
       "process": {
-        "time": 42.0,
+        "time": 2.0,
         "query": {
-          "time": 2.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -131,7 +131,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 40.0
+          "time": 2.0
         }
       }
     }

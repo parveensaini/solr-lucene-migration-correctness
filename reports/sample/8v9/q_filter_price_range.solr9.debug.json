@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 19,
+    "QTime": 7,
     "params": {
       "q": "iphone charger",
       "defType": "edismax",
@@ -93,7 +93,7 @@
       "IndexOrDocValuesQuery(price:[10.0 TO 25.0])"
     ],
     "timing": {
-      "time": 19.0,
+      "time": 7.0,
       "prepare": {
         "time": 1.0,
         "query": {
@@ -125,7 +125,7 @@
         }
       },
       "process": {
-        "time": 17.0,
+        "time": 5.0,
         "query": {
           "time": 0.0
         },
@@ -151,7 +151,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 17.0
+          "time": 5.0
         }
       }
     }

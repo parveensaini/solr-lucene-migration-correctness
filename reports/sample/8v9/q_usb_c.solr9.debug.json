@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 9,
+    "QTime": 15,
     "params": {
       "q": "usb c charger 20w",
       "defType": "edismax",
@@ -86,7 +86,7 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 9.0,
+      "time": 15.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -118,7 +118,7 @@
         }
       },
       "process": {
-        "time": 8.0,
+        "time": 14.0,
         "query": {
           "time": 0.0
         },
@@ -144,7 +144,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 8.0
+          "time": 14.0
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 12,
+    "QTime": 14,
     "params": {
       "mm": "2<75%",
       "q": "iphone fast 20w usb c adapter",
@@ -82,7 +82,7 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 12.0,
+      "time": 13.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -114,7 +114,7 @@
         }
       },
       "process": {
-        "time": 11.0,
+        "time": 12.0,
         "query": {
           "time": 0.0
         },
@@ -140,7 +140,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 11.0
+          "time": 12.0
         }
       }
     }

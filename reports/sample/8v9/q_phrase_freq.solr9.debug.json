@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 12,
+    "QTime": 11,
     "params": {
       "q": "\"fast charger\" iphone",
       "defType": "edismax",
@@ -87,7 +87,7 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 12.0,
+      "time": 11.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -145,7 +145,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 10.0
+          "time": 9.0
         }
       }
     }

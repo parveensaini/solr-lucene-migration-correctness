@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 7,
+    "QTime": 11,
     "params": {
       "q": "iphone charger",
       "defType": "edismax",
@@ -86,11 +86,11 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 7.0,
+      "time": 11.0,
       "prepare": {
-        "time": 0.0,
+        "time": 1.0,
         "query": {
-          "time": 0.0
+          "time": 1.0
         },
         "facet": {
           "time": 0.0
@@ -118,7 +118,7 @@
         }
       },
       "process": {
-        "time": 6.0,
+        "time": 7.0,
         "query": {
           "time": 0.0
         },
@@ -144,7 +144,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 6.0
+          "time": 7.0
         }
       }
     }

@@ -1,0 +1,65 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 9,
+    "params": {
+      "q": "usb c charger 20w",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2 tags",
+      "fl": "id,score",
+      "q.op": "OR",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 16,
+    "start": 0,
+    "maxScore": 9.730376,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "1",
+        "score": 9.730376
+      },
+      {
+        "id": "12",
+        "score": 9.730376
+      },
+      {
+        "id": "18",
+        "score": 9.150873
+      },
+      {
+        "id": "2",
+        "score": 8.455669
+      },
+      {
+        "id": "14",
+        "score": 6.597644
+      },
+      {
+        "id": "15",
+        "score": 6.597644
+      },
+      {
+        "id": "6",
+        "score": 5.418318
+      },
+      {
+        "id": "13",
+        "score": 4.578894
+      },
+      {
+        "id": "3",
+        "score": 4.477105
+      },
+      {
+        "id": "9",
+        "score": 4.1715617
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 2,
+    "params": {
+      "mm": "2<75%",
+      "q": "iphone fast 20w usb c adapter",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2",
+      "fl": "id,score",
+      "q.op": "OR",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 9,
+    "start": 0,
+    "maxScore": 12.509465,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "18",
+        "score": 12.509465
+      },
+      {
+        "id": "2",
+        "score": 12.155692
+      },
+      {
+        "id": "1",
+        "score": 11.833829
+      },
+      {
+        "id": "3",
+        "score": 9.924996
+      },
+      {
+        "id": "12",
+        "score": 9.414147
+      },
+      {
+        "id": "7",
+        "score": 6.9418077
+      },
+      {
+        "id": "9",
+        "score": 6.4402823
+      },
+      {
+        "id": "5",
+        "score": 6.198982
+      },
+      {
+        "id": "8",
+        "score": 4.8405294
+      }
+    ]
+  }
+}

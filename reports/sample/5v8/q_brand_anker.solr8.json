@@ -1,0 +1,38 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 4
+  },
+  "response": {
+    "numFound": 6,
+    "start": 0,
+    "maxScore": 4.095487,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "1",
+        "score": 4.095487
+      },
+      {
+        "id": "9",
+        "score": 4.095487
+      },
+      {
+        "id": "11",
+        "score": 3.566369
+      },
+      {
+        "id": "7",
+        "score": 3.263454
+      },
+      {
+        "id": "5",
+        "score": 1.9580724
+      },
+      {
+        "id": "14",
+        "score": 1.7513531
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 4
+  },
+  "response": {
+    "numFound": 9,
+    "start": 0,
+    "maxScore": 5.7952895,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "3",
+        "score": 5.7952895
+      },
+      {
+        "id": "5",
+        "score": 5.7952895
+      },
+      {
+        "id": "7",
+        "score": 5.7952895
+      },
+      {
+        "id": "9",
+        "score": 1.4152287
+      },
+      {
+        "id": "12",
+        "score": 1.3637486
+      },
+      {
+        "id": "2",
+        "score": 1.3175062
+      },
+      {
+        "id": "1",
+        "score": 1.2756699
+      },
+      {
+        "id": "15",
+        "score": 1.2375816
+      },
+      {
+        "id": "8",
+        "score": 0.86251026
+      }
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 5,
+    "params": {
+      "q": "iphone charger",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2 tags",
+      "fl": "id,score",
+      "q.op": "OR",
+      "fq": "brand:Anker",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json",
+      "debugQuery": "on"
+    }
+  },
+  "response": {
+    "numFound": 6,
+    "start": 0,
+    "maxScore": 4.095487,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "1",
+        "score": 4.095487
+      },
+      {
+        "id": "9",
+        "score": 4.095487
+      },
+      {
+        "id": "11",
+        "score": 3.566369
+      },
+      {
+        "id": "7",
+        "score": 3.263454
+      },
+      {
+        "id": "5",
+        "score": 1.9580724
+      },
+      {
+        "id": "14",
+        "score": 1.7513531
+      }
+    ]
+  },
+  "debug": {
+    "rawquerystring": "iphone charger",
+    "querystring": "iphone charger",
+    "parsedquery": "+(DisjunctionMaxQuery(((body:iphone)^2.0 | (title:iphone)^3.0 | tags:iphone)) DisjunctionMaxQuery((tags:charger | (body:charger)^2.0 | (title:charger)^3.0)))",
+    "parsedquery_toString": "+(((body:iphone)^2.0 | (title:iphone)^3.0 | tags:iphone) (tags:charger | (body:charger)^2.0 | (title:charger)^3.0))",
+    "explain": {
+      "1": "\n4.095487 = sum of:\n  2.344134 = max of:\n    0.9230442 = weight(body:iphone in 0) [ClassicSimilarity], result of:\n      0.9230442 = score(freq=2.0), product of:\n        2.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.25 = fieldNorm\n    2.344134 = weight(title:iphone in 0) [ClassicSimilarity], result of:\n      2.344134 = score(freq=1.0), product of:\n        3.0 = boost\n        1.7472144 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          8 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.4472136 = fieldNorm\n    1.3053817 = weight(tags:iphone in 0) [ClassicSimilarity], result of:\n      1.3053817 = score(freq=1.0), product of:\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n  1.7513531 = max of:\n    1.1718502 = weight(tags:charger in 0) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    0.82862324 = weight(body:charger in 0) [ClassicSimilarity], result of:\n      0.82862324 = score(freq=2.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.25 = fieldNorm\n    1.7513531 = weight(title:charger in 0) [ClassicSimilarity], result of:\n      1.7513531 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.4472136 = fieldNorm\n",
+      "9": "\n4.095487 = sum of:\n  2.344134 = max of:\n    1.0240256 = weight(body:iphone in 8) [ClassicSimilarity], result of:\n      1.0240256 = score(freq=2.0), product of:\n        2.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.2773501 = fieldNorm\n    2.344134 = weight(title:iphone in 8) [ClassicSimilarity], result of:\n      2.344134 = score(freq=1.0), product of:\n        3.0 = boost\n        1.7472144 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          8 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.4472136 = fieldNorm\n    1.3053817 = weight(tags:iphone in 8) [ClassicSimilarity], result of:\n      1.3053817 = score(freq=1.0), product of:\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n  1.7513531 = max of:\n    1.1718502 = weight(tags:charger in 8) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    0.9192749 = weight(body:charger in 8) [ClassicSimilarity], result of:\n      0.9192749 = score(freq=2.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.2773501 = fieldNorm\n    1.7513531 = weight(title:charger in 8) [ClassicSimilarity], result of:\n      1.7513531 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.4472136 = fieldNorm\n",
+      "11": "\n3.566369 = sum of:\n  1.3053817 = max of:\n    0.7536624 = weight(body:iphone in 10) [ClassicSimilarity], result of:\n      0.7536624 = score(freq=1.0), product of:\n        2.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.28867513 = fieldNorm\n    1.3053817 = weight(tags:iphone in 10) [ClassicSimilarity], result of:\n      1.3053817 = score(freq=1.0), product of:\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n  2.2609873 = max of:\n    1.1718502 = weight(tags:charger in 10) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    0.95681167 = weight(body:charger in 10) [ClassicSimilarity], result of:\n      0.95681167 = score(freq=2.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.28867513 = fieldNorm\n    2.2609873 = weight(title:charger in 10) [ClassicSimilarity], result of:\n      2.2609873 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.57735026 = fieldNorm\n",
+      "7": "\n3.263454 = sum of:\n  1.3053817 = max of:\n    0.9230442 = weight(body:iphone in 6) [ClassicSimilarity], result of:\n      0.9230442 = score(freq=2.0), product of:\n        2.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.25 = fieldNorm\n    1.3053817 = weight(tags:iphone in 6) [ClassicSimilarity], result of:\n      1.3053817 = score(freq=1.0), product of:\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n  1.9580724 = max of:\n    1.1718502 = weight(tags:charger in 6) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    1.1718502 = weight(body:charger in 6) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=4.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        2.0 = tf(freq=4.0), with freq of:\n          4.0 = freq, occurrences of term within document\n        0.25 = fieldNorm\n    1.9580724 = weight(title:charger in 6) [ClassicSimilarity], result of:\n      1.9580724 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.5 = fieldNorm\n",
+      "5": "\n1.9580724 = sum of:\n  1.9580724 = max of:\n    1.1718502 = weight(tags:charger in 4) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    0.9192749 = weight(body:charger in 4) [ClassicSimilarity], result of:\n      0.9192749 = score(freq=2.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.2773501 = fieldNorm\n    1.9580724 = weight(title:charger in 4) [ClassicSimilarity], result of:\n      1.9580724 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.5 = fieldNorm\n",
+      "14": "\n1.7513531 = sum of:\n  1.7513531 = max of:\n    1.1718502 = weight(tags:charger in 13) [ClassicSimilarity], result of:\n      1.1718502 = score(freq=1.0), product of:\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        1.0 = fieldNorm\n    0.9192749 = weight(body:charger in 13) [ClassicSimilarity], result of:\n      0.9192749 = score(freq=2.0), product of:\n        2.0 = boost\n        1.1718502 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          15 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.4142135 = tf(freq=2.0), with freq of:\n          2.0 = freq, occurrences of term within document\n        0.2773501 = fieldNorm\n    1.7513531 = weight(title:charger in 13) [ClassicSimilarity], result of:\n      1.7513531 = score(freq=1.0), product of:\n        3.0 = boost\n        1.3053817 = idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:\n          13 = docFreq, number of documents containing term\n          18 = docCount, total number of documents with field\n        1.0 = tf(freq=1.0), with freq of:\n          1.0 = freq, occurrences of term within document\n        0.4472136 = fieldNorm\n"
+    },
+    "QParser": "ExtendedDismaxQParser",
+    "altquerystring": null,
+    "boost_queries": null,
+    "parsed_boost_queries": [],
+    "boostfuncs": null,
+    "filter_queries": [
+      "brand:Anker"
+    ],
+    "parsed_filter_queries": [
+      "brand:Anker"
+    ],
+    "timing": {
+      "time": 5.0,
+      "prepare": {
+        "time": 0.0,
+        "query": {
+          "time": 0.0
+        },
+        "facet": {
+          "time": 0.0
+        },
+        "facet_module": {
+          "time": 0.0
+        },
+        "mlt": {
+          "time": 0.0
+        },
+        "highlight": {
+          "time": 0.0
+        },
+        "stats": {
+          "time": 0.0
+        },
+        "expand": {
+          "time": 0.0
+        },
+        "terms": {
+          "time": 0.0
+        },
+        "debug": {
+          "time": 0.0
+        }
+      },
+      "process": {
+        "time": 3.0,
+        "query": {
+          "time": 0.0
+        },
+        "facet": {
+          "time": 0.0
+        },
+        "facet_module": {
+          "time": 0.0
+        },
+        "mlt": {
+          "time": 0.0
+        },
+        "highlight": {
+          "time": 0.0
+        },
+        "stats": {
+          "time": 0.0
+        },
+        "expand": {
+          "time": 0.0
+        },
+        "terms": {
+          "time": 0.0
+        },
+        "debug": {
+          "time": 3.0
+        }
+      }
+    }
+  }
+}

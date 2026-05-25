@@ -1,0 +1,50 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 5,
+    "params": {
+      "q": "iphone charger",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2 tags",
+      "fl": "id,score",
+      "q.op": "OR",
+      "fq": "brand:Anker",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 6,
+    "start": 0,
+    "maxScore": 4.095487,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "1",
+        "score": 4.095487
+      },
+      {
+        "id": "9",
+        "score": 4.095487
+      },
+      {
+        "id": "11",
+        "score": 3.566369
+      },
+      {
+        "id": "7",
+        "score": 3.263454
+      },
+      {
+        "id": "5",
+        "score": 1.9580724
+      },
+      {
+        "id": "14",
+        "score": 1.7513531
+      }
+    ]
+  }
+}

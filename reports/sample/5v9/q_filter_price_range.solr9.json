@@ -1,0 +1,66 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 3,
+    "params": {
+      "q": "iphone charger",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2 tags",
+      "fl": "id,score",
+      "q.op": "OR",
+      "fq": "price:[10 TO 25]",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 10,
+    "start": 0,
+    "maxScore": 4.578894,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "3",
+        "score": 4.578894
+      },
+      {
+        "id": "1",
+        "score": 4.095487
+      },
+      {
+        "id": "8",
+        "score": 4.095487
+      },
+      {
+        "id": "9",
+        "score": 4.095487
+      },
+      {
+        "id": "16",
+        "score": 3.7064016
+      },
+      {
+        "id": "11",
+        "score": 3.566369
+      },
+      {
+        "id": "7",
+        "score": 3.263454
+      },
+      {
+        "id": "12",
+        "score": 3.0567348
+      },
+      {
+        "id": "5",
+        "score": 1.9580724
+      },
+      {
+        "id": "18",
+        "score": 1.1718502
+      }
+    ]
+  }
+}

@@ -26,3 +26,11 @@ __pycache__/
 reports/*
 !reports/sample/
 !reports/sample/**
+
+# Solr 9 runtime data
+docker/solr9/core1/data/
+docker/solr9/core1/core.properties
+
+# Profiling artifacts
+*.profraw
+*.profdata

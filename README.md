@@ -46,15 +46,27 @@ This approach focuses on **correctness and semantic equivalence**, not just conf
 
 ### Solr 5 vs Solr 8 — significant drift across Lucene major version boundary
 
-- `q_basic` → Jaccard(top10): `0.818`, max normalized drift: `0.190` ❌
-- `q_phrase_freq` → Jaccard(top10): `0.667`, max rank delta: `4`, max normalized drift: `0.335` ❌
-- `q_brand_anker` → Jaccard(top10): `1.000`, no rank changes, but max normalized drift: `0.276` ❌
+- `q_basic` → Jaccard: `0.818`, RBO(p=0.9): `0.943`, max normalized drift: `0.190` ❌
+- `q_phrase_freq` → Jaccard: `0.667`, RBO(p=0.9): `0.852`, max rank delta: `4`, max normalized drift: `0.335` ❌
+- `q_brand_anker` → Jaccard: `1.000`, RBO(p=0.9): `0.469`, no rank changes, but max normalized drift: `0.276` ❌
 
 ### Solr 8 vs Solr 9 — clean migration with equivalent similarity configuration
 
-- All 8 queries: Jaccard(top10): `1.000`, rank delta: `0`, score drift: `0.000` ✅
+- All 8 queries: Jaccard: `1.000`, RBO(p=0.9): `1.000`, rank delta: `0`, score drift: `0.000` ✅
 
 This contrast illustrates the core value of the harness: the Solr 5 → 8 boundary introduced measurable ranking drift across 7 of 8 queries, while Solr 8 → 9 (with explicitly configured ClassicSimilarity) produced zero drift — giving teams confidence their migration is safe before switching production traffic.
+
+## Drift Metrics
+
+The harness reports the following metrics per query pair:
+
+**Jaccard(top-N)** measures candidate set overlap as an unweighted ratio. It detects when documents enter or leave the result set but is blind to rank order changes within the set.
+
+**RBO (Rank-Biased Overlap, p=0.9)** measures top-weighted ranked-list similarity. Unlike Jaccard, RBO penalizes rank changes near the top of the result list more heavily than changes near the bottom — rank 1 carries roughly 10x the weight of rank 10. A value of 1.0 means identical ranking; 0.0 means completely disjoint. Suggested by [@epugh](https://github.com/epugh). Implemented following Webber et al., ACM TOIS 2010.
+
+**Avg / Max Abs Rank Delta** measures how far individual documents moved in rank position across versions.
+
+**Max Abs Normalized Score Drift** measures score distribution change normalized by the top document score, making it comparable across queries with different score magnitudes.
 
 ## Production Use
 

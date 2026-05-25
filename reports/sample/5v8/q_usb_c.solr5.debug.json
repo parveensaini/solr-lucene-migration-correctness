@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 4
+    "QTime": 2
   },
   "response": {
     "numFound": 16,
@@ -73,7 +73,7 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 4.0,
+      "time": 2.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -102,7 +102,7 @@
         }
       },
       "process": {
-        "time": 3.0,
+        "time": 1.0,
         "query": {
           "time": 0.0
         },
@@ -125,7 +125,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 3.0
+          "time": 1.0
         }
       }
     }

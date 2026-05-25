@@ -40,6 +40,7 @@ OUTDIR = sys.argv[2] if len(sys.argv) > 2 else "reports"
 TOPN        = int(os.environ.get("TOPN",        "10"))
 EXPLAIN_TOP = int(os.environ.get("EXPLAIN_TOP", "2"))
 TIMEOUT     = int(os.environ.get("TIMEOUT",     "20"))
+RBO_P       = float(os.environ.get("RBO_P",     "0.9"))
 
 # Thresholds (tune per org)
 MAX_AVG_ABS_RANK_DELTA = float(os.environ.get("MAX_AVG_ABS_RANK_DELTA", "1.0"))
@@ -111,6 +112,52 @@ def jaccard(a, b):
     return 1.0 if not sa and not sb else len(sa & sb) / max(1, len(sa | sb))
 
 
+def rbo(list_a, list_b, p=0.9):
+    """
+    Rank-Biased Overlap (RBO) for two finite ranked lists.
+
+    Uses the RBO_EXT (extrapolated) variant from Webber et al. (2010)
+    which adds a residual term to account for the unobserved tail,
+    ensuring identical lists return 1.0 regardless of length.
+
+    Unlike Jaccard, which measures unweighted set overlap, RBO weights
+    agreement at the top of the ranking more heavily than the bottom.
+    This makes it more sensitive to changes near rank 1, which matter
+    most in search and retrieval.
+
+    p (persistence) controls the top-weight emphasis:
+      - lower p (e.g. 0.5): only top ranks matter
+      - higher p (e.g. 0.99): deeper ranks contribute more
+      - default p=0.9: rank 1 carries ~10x the weight of rank 10
+
+    Reference: Webber et al., "A Similarity Measure for Indefinite Rankings"
+    ACM TOIS 2010. https://doi.org/10.1145/1852102.1852106
+    """
+    if not list_a and not list_b:
+        return 1.0
+
+    depth  = max(len(list_a), len(list_b))
+    seen_a = set()
+    seen_b = set()
+    score  = 0.0
+
+    for d in range(1, depth + 1):
+        if d <= len(list_a):
+            seen_a.add(list_a[d - 1])
+        if d <= len(list_b):
+            seen_b.add(list_b[d - 1])
+        overlap   = len(seen_a & seen_b)
+        agreement = overlap / d
+        score    += agreement * (p ** (d - 1))
+
+    # Residual term: accounts for the unobserved tail beyond depth d.
+    # Without this, identical finite lists return < 1.0.
+    overlap_at_d = len(seen_a & seen_b)
+    residual = (overlap_at_d / depth) * (p ** depth)
+
+    return (1 - p) * score + residual
+
+
 def rank_positions(ids):
     return {doc_id: i for i, doc_id in enumerate(ids)}
 
@@ -164,16 +211,13 @@ def status_badge(status):
 # Per-pair diff
 # ---------------------------------------------------------------------------
 def run_pair(pair_label, url_a, lbl_a, url_b, lbl_b, queries, pair_outdir):
-    """Run all queries for one (A, B) pair and write reports."""
     os.makedirs(pair_outdir, exist_ok=True)
-
     report = {lbl_a: url_a, lbl_b: url_b, "pair": pair_label, "queries": []}
 
     for q in queries:
         name   = q["name"]
         params = dict(q.get("params", {}))
 
-        # Normalise fq to list
         fq = params.get("fq")
         if isinstance(fq, str):
             params["fq"] = [fq]
@@ -231,7 +275,8 @@ def run_pair(pair_label, url_a, lbl_a, url_b, lbl_b, queries, pair_outdir):
         max_abs_norm = abs(drift_norm_abs[0]["abs"]) if drift_norm_abs else 0.0
         status, reason = classify(churn, max_abs_norm)
 
-        # Explain snippets for top drifting docs
+        rbo_score = rbo(top_a, top_b, p=RBO_P)
+
         explain_ids = [d["id"] for d in drift_abs[:EXPLAIN_TOP]] if EXPLAIN_TOP > 0 else []
         explains    = {lbl_a: {}, lbl_b: {}}
         if explain_ids:
@@ -243,22 +288,24 @@ def run_pair(pair_label, url_a, lbl_a, url_b, lbl_b, queries, pair_outdir):
             json.dump(dbg_b, open(os.path.join(pair_outdir, f"{name}.{lbl_b}.debug.json"), "w"), indent=2)
 
         entry = {
-            "name":                    name,
-            "params":                  params,
-            "topn":                    TOPN,
-            "status":                  status,
-            "reason":                  reason,
-            "passed":                  status == "PASS",
-            "jaccard_topn":            jaccard(top_a, top_b),
-            f"only_in_{lbl_a}_topn":   only_a,
-            f"only_in_{lbl_b}_topn":   only_b,
-            "rank_churn":              churn,
-            "top_score":               {lbl_a: top_score_a, lbl_b: top_score_b},
-            "max_abs_norm_drift":      max_abs_norm,
-            "score_drift_top_abs":     drift_abs[:5],
-            "norm_score_drift_top_abs":drift_norm_abs[:5],
-            "explain_ids":             explain_ids,
-            "explains":                explains,
+            "name":                     name,
+            "params":                   params,
+            "topn":                     TOPN,
+            "status":                   status,
+            "reason":                   reason,
+            "passed":                   status == "PASS",
+            "jaccard_topn":             jaccard(top_a, top_b),
+            "rbo":                      round(rbo_score, 4),
+            "rbo_p":                    RBO_P,
+            f"only_in_{lbl_a}_topn":    only_a,
+            f"only_in_{lbl_b}_topn":    only_b,
+            "rank_churn":               churn,
+            "top_score":                {lbl_a: top_score_a, lbl_b: top_score_b},
+            "max_abs_norm_drift":       max_abs_norm,
+            "score_drift_top_abs":      drift_abs[:5],
+            "norm_score_drift_top_abs": drift_norm_abs[:5],
+            "explain_ids":              explain_ids,
+            "explains":                 explains,
         }
         report["queries"].append(entry)
 
@@ -285,6 +332,9 @@ def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
         f"- MAX_AVG_ABS_RANK_DELTA={MAX_AVG_ABS_RANK_DELTA}\n",
         f"- MAX_MAX_ABS_RANK_DELTA={MAX_MAX_ABS_RANK_DELTA}\n",
         f"- MAX_MAX_ABS_NORM_DRIFT={MAX_MAX_ABS_NORM_DRIFT}\n\n",
+        "> **RBO** (Rank-Biased Overlap, p={:.2f}) measures top-weighted ranked-list agreement. ".format(RBO_P),
+        "Unlike Jaccard, which only measures set overlap, RBO penalizes changes near the top of the "
+        "result list more heavily than changes near the bottom. A value of 1.0 means identical ranking.\n\n",
     ]
 
     for e in report["queries"]:
@@ -293,6 +343,7 @@ def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
             lines.append(f"- Reason: {e['reason']}\n")
 
         lines.append(f"- Jaccard(top{e['topn']}): **{e['jaccard_topn']:.3f}**\n")
+        lines.append(f"- RBO(p={e['rbo_p']}): **{e['rbo']:.4f}**\n")
         lines.append(
             f"- Avg abs rank delta: **{e['rank_churn']['avg_abs_rank_delta']:.2f}**"
             f" (max: {e['rank_churn']['max_abs_rank_delta']},"
@@ -355,17 +406,21 @@ def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
 # Cross-pair summary
 # ---------------------------------------------------------------------------
 def write_combined_summary(all_reports, outdir):
-    """Write a top-level summary across all pairs."""
-    lines = ["# Combined Migration Summary\n\n"]
-    lines.append("| Pair | Query | Status | Jaccard | Avg Rank Δ | Max Norm Drift |\n")
-    lines.append("|---|---|---|---:|---:|---:|\n")
+    lines = [
+        "# Combined Migration Summary\n\n",
+        "> **RBO** (Rank-Biased Overlap) measures top-weighted ranked-list similarity. "
+        "Unlike Jaccard, RBO penalizes rank changes near the top more heavily than changes near the bottom. "
+        "A value of 1.0 means identical ranking.\n\n",
+        "| Pair | Query | Status | Jaccard | RBO(p=0.9) | Avg Rank Δ | Max Norm Drift |\n",
+        "|---|---|---|---:|---:|---:|---:|\n",
+    ]
 
     for pair_label, report in all_reports:
-        lbl_a = list(report.keys())[0]   # first key is lbl_a url
         for e in report["queries"]:
             lines.append(
                 f"| {pair_label} | {e['name']} | {status_badge(e['status'])}"
                 f" | {e['jaccard_topn']:.3f}"
+                f" | {e['rbo']:.4f}"
                 f" | {e['rank_churn']['avg_abs_rank_delta']:.2f}"
                 f" | {e['max_abs_norm_drift']:.3f} |\n"
             )

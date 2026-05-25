@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 31,
+    "QTime": 6,
     "params": {
       "q": "iphone charger",
       "defType": "edismax",
@@ -93,11 +93,11 @@
       "in_stock:true"
     ],
     "timing": {
-      "time": 31.0,
+      "time": 6.0,
       "prepare": {
-        "time": 1.0,
+        "time": 0.0,
         "query": {
-          "time": 1.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -125,9 +125,9 @@
         }
       },
       "process": {
-        "time": 28.0,
+        "time": 5.0,
         "query": {
-          "time": 1.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -151,7 +151,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 26.0
+          "time": 5.0
         }
       }
     }

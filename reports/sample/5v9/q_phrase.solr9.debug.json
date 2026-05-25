@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 6,
+    "QTime": 7,
     "params": {
       "q": "\"fast charger\"",
       "defType": "edismax",
@@ -82,11 +82,11 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 6.0,
+      "time": 7.0,
       "prepare": {
-        "time": 0.0,
+        "time": 1.0,
         "query": {
-          "time": 0.0
+          "time": 1.0
         },
         "facet": {
           "time": 0.0

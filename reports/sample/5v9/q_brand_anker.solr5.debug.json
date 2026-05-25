@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 24
+    "QTime": 2
   },
   "response": {
     "numFound": 6,
@@ -59,11 +59,11 @@
       "brand:Anker"
     ],
     "timing": {
-      "time": 23.0,
+      "time": 2.0,
       "prepare": {
-        "time": 1.0,
+        "time": 0.0,
         "query": {
-          "time": 1.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -88,9 +88,9 @@
         }
       },
       "process": {
-        "time": 21.0,
+        "time": 1.0,
         "query": {
-          "time": 2.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -111,7 +111,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 18.0
+          "time": 1.0
         }
       }
     }

@@ -21,6 +21,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -174,6 +176,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -327,6 +331,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -479,6 +485,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -634,6 +642,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -789,6 +799,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -944,6 +956,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -1097,6 +1111,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr8_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {

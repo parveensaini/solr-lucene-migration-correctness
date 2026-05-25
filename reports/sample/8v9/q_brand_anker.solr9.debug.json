@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 13,
+    "QTime": 3,
     "params": {
       "q": "iphone charger",
       "defType": "edismax",
@@ -73,11 +73,11 @@
       "brand:Anker"
     ],
     "timing": {
-      "time": 13.0,
+      "time": 3.0,
       "prepare": {
-        "time": 1.0,
+        "time": 0.0,
         "query": {
-          "time": 1.0
+          "time": 0.0
         },
         "facet": {
           "time": 0.0
@@ -105,7 +105,7 @@
         }
       },
       "process": {
-        "time": 11.0,
+        "time": 2.0,
         "query": {
           "time": 0.0
         },
@@ -131,7 +131,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 11.0
+          "time": 2.0
         }
       }
     }

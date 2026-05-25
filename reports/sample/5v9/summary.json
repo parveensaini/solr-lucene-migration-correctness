@@ -21,6 +21,8 @@
       "reason": "max_abs_norm_drift 0.190 >= 0.15",
       "passed": false,
       "jaccard_topn": 0.8181818181818182,
+      "rbo": 0.9429,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [
         "12"
       ],
@@ -178,6 +180,8 @@
       "reason": "",
       "passed": true,
       "jaccard_topn": 1.0,
+      "rbo": 0.9588,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -331,6 +335,8 @@
       "reason": "max_abs_rank_delta 4 >= 4 (not near-tie; max_abs_norm_drift 0.335)",
       "passed": false,
       "jaccard_topn": 0.6666666666666666,
+      "rbo": 0.8522,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [
         "12",
         "2"
@@ -489,6 +495,8 @@
       "reason": "max_abs_norm_drift 0.285 >= 0.15",
       "passed": false,
       "jaccard_topn": 0.8181818181818182,
+      "rbo": 0.9321,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [
         "7"
       ],
@@ -648,6 +656,8 @@
       "reason": "max_abs_norm_drift 0.190 >= 0.15",
       "passed": false,
       "jaccard_topn": 0.8181818181818182,
+      "rbo": 0.9331,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [
         "2"
       ],
@@ -807,6 +817,8 @@
       "reason": "max_abs_norm_drift 0.405 >= 0.15",
       "passed": false,
       "jaccard_topn": 1.0,
+      "rbo": 0.9694,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -962,6 +974,8 @@
       "reason": "max_abs_norm_drift 0.276 >= 0.15",
       "passed": false,
       "jaccard_topn": 1.0,
+      "rbo": 1.0,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {
@@ -1115,6 +1129,8 @@
       "reason": "max_abs_norm_drift 0.158 >= 0.15",
       "passed": false,
       "jaccard_topn": 1.0,
+      "rbo": 0.9,
+      "rbo_p": 0.9,
       "only_in_solr5_topn": [],
       "only_in_solr9_topn": [],
       "rank_churn": {

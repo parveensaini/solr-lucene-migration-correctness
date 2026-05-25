@@ -8,8 +8,11 @@ Thresholds:
 - MAX_MAX_ABS_RANK_DELTA=4
 - MAX_MAX_ABS_NORM_DRIFT=0.15
 
+> **RBO** (Rank-Biased Overlap, p=0.90) measures top-weighted ranked-list agreement. Unlike Jaccard, which only measures set overlap, RBO penalizes changes near the top of the result list more heavily than changes near the bottom. A value of 1.0 means identical ranking.
+
 ## q_basic — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **4.578894 / 4.578894**
 - Max abs normalized drift: **0.000**
@@ -96,6 +99,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_phrase — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **5.795289 / 5.795289**
 - Max abs normalized drift: **0.000**
@@ -182,6 +186,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_phrase_freq — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **8.416111 / 8.416111**
 - Max abs normalized drift: **0.000**
@@ -268,6 +273,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_usb_c — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **9.730376 / 9.730376**
 - Max abs normalized drift: **0.000**
@@ -354,6 +360,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_filter_instock — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **4.578894 / 4.578894**
 - Max abs normalized drift: **0.000**
@@ -440,6 +447,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_filter_price_range — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **4.578894 / 4.578894**
 - Max abs normalized drift: **0.000**
@@ -526,6 +534,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_brand_anker — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **4.095487 / 4.095487**
 - Max abs normalized drift: **0.000**
@@ -612,6 +621,7 @@ Explain snippets (top raw-drift docs):
 
 ## q_near_tie_stress — PASS ✅
 - Jaccard(top10): **1.000**
+- RBO(p=0.9): **1.0000**
 - Avg abs rank delta: **0.00** (max: 0, changes: 0)
 - Top score (SOLR8/SOLR9): **12.509465 / 12.509465**
 - Max abs normalized drift: **0.000**

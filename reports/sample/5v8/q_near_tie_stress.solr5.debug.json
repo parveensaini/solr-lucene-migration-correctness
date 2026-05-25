@@ -1,7 +1,7 @@
 {
   "responseHeader": {
     "status": 0,
-    "QTime": 63
+    "QTime": 10
   },
   "response": {
     "numFound": 9,
@@ -68,11 +68,11 @@
     "parsed_boost_queries": [],
     "boostfuncs": null,
     "timing": {
-      "time": 63.0,
+      "time": 10.0,
       "prepare": {
-        "time": 1.0,
+        "time": 3.0,
         "query": {
-          "time": 1.0
+          "time": 3.0
         },
         "facet": {
           "time": 0.0
@@ -97,9 +97,9 @@
         }
       },
       "process": {
-        "time": 60.0,
+        "time": 6.0,
         "query": {
-          "time": 3.0
+          "time": 2.0
         },
         "facet": {
           "time": 0.0
@@ -120,7 +120,7 @@
           "time": 0.0
         },
         "debug": {
-          "time": 56.0
+          "time": 3.0
         }
       }
     }

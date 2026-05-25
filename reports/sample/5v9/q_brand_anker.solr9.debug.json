@@ -73,7 +73,7 @@
       "brand:Anker"
     ],
     "timing": {
-      "time": 5.0,
+      "time": 4.0,
       "prepare": {
         "time": 0.0,
         "query": {
@@ -105,7 +105,7 @@
         }
       },
       "process": {
-        "time": 3.0,
+        "time": 4.0,
         "query": {
           "time": 0.0
         },

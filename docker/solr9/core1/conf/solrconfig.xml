@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Minimal solrconfig.xml for Solr 9 harness core.
+  Solr 9 no longer ships implicit defaults for many settings that older versions
+  provided automatically. This config is intentionally close to the solr8 defaults
+  so that the 8-vs-9 diff measures real ranking differences, not config gaps.
+-->
+<config>
+
+  <luceneMatchVersion>9.0</luceneMatchVersion>
+
+  <!-- ================================================================== -->
+  <!-- Index writer defaults                                                -->
+  <!-- ================================================================== -->
+  <indexConfig>
+    <ramBufferSizeMB>100</ramBufferSizeMB>
+    <maxBufferedDocs>1000</maxBufferedDocs>
+  </indexConfig>
+
+  <!-- ================================================================== -->
+  <!-- Update handler                                                       -->
+  <!-- ================================================================== -->
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.ulog.dir:}</str>
+    </updateLog>
+    <autoCommit>
+      <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
+      <openSearcher>false</openSearcher>
+    </autoCommit>
+    <autoSoftCommit>
+      <maxTime>${solr.autoSoftCommit.maxTime:-1}</maxTime>
+    </autoSoftCommit>
+  </updateHandler>
+
+  <!-- ================================================================== -->
+  <!-- Query / search                                                       -->
+  <!-- ================================================================== -->
+  <query>
+    <maxBooleanClauses>${solr.max.booleanClauses:1024}</maxBooleanClauses>
+    <filterCache       class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0"/>
+    <queryResultCache  class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0"/>
+    <documentCache     class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0"/>
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+    <queryResultWindowSize>20</queryResultWindowSize>
+    <queryResultMaxDocsCached>200</queryResultMaxDocsCached>
+    <useColdSearcher>false</useColdSearcher>
+  </query>
+
+  <!-- ================================================================== -->
+  <!-- Request dispatcher                                                   -->
+  <!-- ================================================================== -->
+  <requestDispatcher>
+    <httpCaching never304="true"/>
+  </requestDispatcher>
+
+  <!-- ================================================================== -->
+  <!-- Request handlers                                                     -->
+  <!-- ================================================================== -->
+
+  <!-- Standard search handler — mirrors the solr8 harness query path -->
+  <requestHandler name="/select" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str  name="echoParams">explicit</str>
+      <int  name="rows">10</int>
+      <str  name="df">body</str>
+      <str  name="wt">json</str>
+    </lst>
+  </requestHandler>
+
+  <!-- JSON update handler (used by load.sh) -->
+  <requestHandler name="/update" class="solr.UpdateRequestHandler"/>
+
+  <!-- Ping / health-check used by wait loops in shell scripts -->
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
+</config>

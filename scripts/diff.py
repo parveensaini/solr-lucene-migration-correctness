@@ -5,13 +5,14 @@ Compares search results between any two Solr instances and produces
 per-query diff reports (JSON + Markdown).
 
 Usage:
-  # All pairs (5v8, 8v9, 5v9)
+  # All pairs (5v8, 8v9, 5v9, 9v10)
   python scripts/diff.py corpus/queries.json reports
 
   # Single pair via env vars
-  PAIR=5v8 python scripts/diff.py corpus/queries.json reports
-  PAIR=8v9 python scripts/diff.py corpus/queries.json reports
-  PAIR=5v9 python scripts/diff.py corpus/queries.json reports
+  PAIR=5v8  python scripts/diff.py corpus/queries.json reports
+  PAIR=8v9  python scripts/diff.py corpus/queries.json reports
+  PAIR=5v9  python scripts/diff.py corpus/queries.json reports
+  PAIR=9v10 python scripts/diff.py corpus/queries.json reports
 
   # Arbitrary endpoints
   SOLR_A=http://host1/solr/core1 SOLR_B=http://host2/solr/core1 \
@@ -27,9 +28,10 @@ import requests
 # ---------------------------------------------------------------------------
 # Solr endpoints
 # ---------------------------------------------------------------------------
-SOLR5 = os.environ.get("SOLR5", "http://localhost:8985/solr/core1")
-SOLR8 = os.environ.get("SOLR8", "http://localhost:8988/solr/core1")
-SOLR9 = os.environ.get("SOLR9", "http://localhost:8989/solr/core1")
+SOLR5  = os.environ.get("SOLR5",  "http://localhost:8985/solr/core1")
+SOLR8  = os.environ.get("SOLR8",  "http://localhost:8988/solr/core1")
+SOLR9  = os.environ.get("SOLR9",  "http://localhost:8989/solr/core1")
+SOLR10 = os.environ.get("SOLR10", "http://localhost:8990/solr/core1")
 
 # ---------------------------------------------------------------------------
 # CLI / env
@@ -55,9 +57,10 @@ PAIR = os.environ.get("PAIR", "all").lower()
 # All known pairs: label -> (endpoint_a, label_a, endpoint_b, label_b)
 # ---------------------------------------------------------------------------
 ALL_PAIRS = {
-    "5v8": (SOLR5, "solr5", SOLR8, "solr8"),
-    "8v9": (SOLR8, "solr8", SOLR9, "solr9"),
-    "5v9": (SOLR5, "solr5", SOLR9, "solr9"),
+    "5v8":  (SOLR5, "solr5", SOLR8,  "solr8"),
+    "8v9":  (SOLR8, "solr8", SOLR9,  "solr9"),
+    "5v9":  (SOLR5, "solr5", SOLR9,  "solr9"),
+    "9v10": (SOLR9, "solr9", SOLR10, "solr10"),
 }
 
 # Support arbitrary endpoints via env
@@ -93,15 +96,67 @@ def select(base, params):
 def select_debug(base, params):
     p = dict(params)
     p["debugQuery"] = "on"
+    # Request structured (JSON) explains rather than the default flat string.
+    # Structured explains let us normalize sibling ordering (see
+    # normalize_explain) so cosmetic re-ordering across Lucene versions
+    # is not reported as drift.
+    p["debug.explain.structured"] = "true"
     r = requests.get(f"{base}/select", params=p, timeout=TIMEOUT)
     r.raise_for_status()
     return r.json()
 
 
+def normalize_explain(node):
+    """
+    Recursively sort each explain node's 'details' children by a stable key.
+
+    Lucene's explain output lists the child clauses of a DisjunctionMax
+    (edismax) or BooleanQuery in an order that is not guaranteed stable
+    across major versions. That ordering is cosmetic: the values, and the
+    final score, are unchanged. Without normalization the harness would
+    report these re-orderings as explain "differences" even though no
+    scoring behavior changed.
+
+    Sorting siblings by (value, description) removes that ordering noise so
+    only genuine value differences remain visible. Values are never altered.
+    """
+    if not isinstance(node, dict):
+        return node
+    out = {k: v for k, v in node.items() if k != "details"}
+    details = node.get("details")
+    if isinstance(details, list):
+        normed = [normalize_explain(d) for d in details]
+        normed.sort(key=lambda d: (
+            round(float(d.get("value", 0.0)), 6),
+            str(d.get("description", "")),
+        ))
+        out["details"] = normed
+    return out
+
+
+def explain_to_text(node, indent=0):
+    """
+    Render a (normalized) structured explain node back to indented text,
+    matching the familiar Lucene explain layout: "<value> = <description>".
+    Used only for the human-readable Markdown report.
+    """
+    if not isinstance(node, dict):
+        return str(node)
+    pad = "  " * indent
+    value = node.get("value", "")
+    desc  = node.get("description", "")
+    lines = [f"{pad}{value} = {desc}"]
+    for child in node.get("details", []) or []:
+        lines.append(explain_to_text(child, indent + 1))
+    return "\n".join(lines)
+
+
 def extract_explains(debug_json, doc_ids):
     dbg = (debug_json or {}).get("debug", {})
     exp = dbg.get("explain", {}) if isinstance(dbg.get("explain", {}), dict) else {}
-    return {doc_id: exp[doc_id] for doc_id in doc_ids if doc_id in exp}
+    # Normalize sibling ordering so cosmetic cross-version re-ordering is
+    # not mistaken for scoring drift.
+    return {doc_id: normalize_explain(exp[doc_id]) for doc_id in doc_ids if doc_id in exp}
 
 
 # ---------------------------------------------------------------------------
@@ -204,7 +259,7 @@ def classify(churn, max_abs_norm):
 
 
 def status_badge(status):
-    return {"PASS": "PASS ✅", "WARN": "WARN ⚠️", "FAIL": "FAIL ❌"}.get(status, status)
+    return {"PASS": "PASS \u2705", "WARN": "WARN \u26a0\ufe0f", "FAIL": "FAIL \u274c"}.get(status, status)
 
 
 # ---------------------------------------------------------------------------
@@ -268,8 +323,8 @@ def run_pair(pair_label, url_a, lbl_a, url_b, lbl_b, queries, pair_outdir):
                     "rel": (nb - na) / denom_nrel,
                 })
 
-        drift_abs      = sorted(drift_raw,  key=lambda x: abs(x["abs"]), reverse=True)
-        drift_norm_abs = sorted(drift_norm, key=lambda x: abs(x["abs"]), reverse=True)
+        drift_abs      = sorted(drift_raw,  key=lambda x: (abs(x["abs"]), x["id"]), reverse=True)
+        drift_norm_abs = sorted(drift_norm, key=lambda x: (abs(x["abs"]), x["id"]), reverse=True)
 
         churn        = rank_churn(top_a, top_b)
         max_abs_norm = abs(drift_norm_abs[0]["abs"]) if drift_norm_abs else 0.0
@@ -321,6 +376,19 @@ def run_pair(pair_label, url_a, lbl_a, url_b, lbl_b, queries, pair_outdir):
 # ---------------------------------------------------------------------------
 # Markdown report
 # ---------------------------------------------------------------------------
+def _explain_snippet(explain_node, limit=400):
+    """
+    Render a normalized structured explain node to text and truncate it
+    for display. Accepts either the structured dict (new) or a plain
+    string (defensive fallback).
+    """
+    if isinstance(explain_node, dict):
+        text = explain_to_text(explain_node)
+    else:
+        text = str(explain_node)
+    return text[:limit].replace("`", chr(96))
+
+
 def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
     A = lbl_a.upper()
     B = lbl_b.upper()
@@ -335,10 +403,13 @@ def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
         "> **RBO** (Rank-Biased Overlap, p={:.2f}) measures top-weighted ranked-list agreement. ".format(RBO_P),
         "Unlike Jaccard, which only measures set overlap, RBO penalizes changes near the top of the "
         "result list more heavily than changes near the bottom. A value of 1.0 means identical ranking.\n\n",
+        "> **Explain output is normalized**: the child clauses of each explain node are sorted by "
+        "(value, description) before display. Lucene may list DisjunctionMax/Boolean clauses in a "
+        "different order across major versions; that re-ordering is cosmetic and is not reported as drift.\n\n",
     ]
 
     for e in report["queries"]:
-        lines.append(f"## {e['name']} — {status_badge(e['status'])}\n")
+        lines.append(f"## {e['name']} \u2014 {status_badge(e['status'])}\n")
         if e["reason"]:
             lines.append(f"- Reason: {e['reason']}\n")
 
@@ -389,13 +460,13 @@ def _write_markdown(report, outdir, lbl_a, lbl_b, pair_label):
                 )
 
         if e["explain_ids"]:
-            lines.append("\nExplain snippets (top raw-drift docs):\n")
+            lines.append("\nExplain snippets (top raw-drift docs, normalized):\n")
             for doc_id in e["explain_ids"]:
                 ea = e["explains"][lbl_a].get(doc_id, "")
                 eb = e["explains"][lbl_b].get(doc_id, "")
                 lines.append(f"\n**doc id {doc_id}**\n")
-                lines.append(f"\n- {A} explain: `{ea[:400].replace('`', chr(96))}`\n")
-                lines.append(f"- {B} explain: `{eb[:400].replace('`', chr(96))}`\n")
+                lines.append(f"\n- {A} explain: `{_explain_snippet(ea)}`\n")
+                lines.append(f"- {B} explain: `{_explain_snippet(eb)}`\n")
 
         lines.append("\n")
 
@@ -411,7 +482,7 @@ def write_combined_summary(all_reports, outdir):
         "> **RBO** (Rank-Biased Overlap) measures top-weighted ranked-list similarity. "
         "Unlike Jaccard, RBO penalizes rank changes near the top more heavily than changes near the bottom. "
         "A value of 1.0 means identical ranking.\n\n",
-        "| Pair | Query | Status | Jaccard | RBO(p=0.9) | Avg Rank Δ | Max Norm Drift |\n",
+        "| Pair | Query | Status | Jaccard | RBO(p=0.9) | Avg Rank \u0394 | Max Norm Drift |\n",
         "|---|---|---|---:|---:|---:|---:|\n",
     ]
 

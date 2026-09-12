@@ -12,6 +12,7 @@ make diff
 #   reports/5v8/report.md   — Solr 5 vs Solr 8
 #   reports/8v9/report.md   — Solr 8 vs Solr 9
 #   reports/5v9/report.md   — Solr 5 vs Solr 9
+#   reports/9v10/report.md  — Solr 9 vs Solr 10
 #   reports/combined_summary.md
 ```
 
@@ -26,7 +27,7 @@ This harness includes sample drift reports for:
 
 The combined report is at `reports/sample/combined_summary.md`.
 
-**Interpretation:** In this sample corpus and configuration, the Solr 5 → 8 and Solr 5 → 9 comparisons show measurable candidate, rank, and score drift. The Solr 8 → 9 sample is stable under the same controlled setup. This illustrates why migration validation should be measured per version pair and configuration, rather than assumed from successful query execution alone.
+**Interpretation:** In this sample corpus and configuration, the Solr 5 → 8 and Solr 5 → 9 comparisons show measurable candidate, rank, and score drift. The Solr 8 → 9 and Solr 9 → 10 samples are stable under the same controlled setup. This illustrates why migration validation should be measured per version pair and configuration, rather than assumed from successful query execution alone.
 
 This is a demo harness to quantify behavior drift across Solr/Lucene major versions under controlled configs and make ranking differences observable before migration rollout.
 It does not claim Lucene is "wrong"—only that behavior can differ and should be measured for migrations.
@@ -55,7 +56,11 @@ This approach focuses on **correctness and semantic equivalence**, not just conf
 
 - All 8 queries: Jaccard: `1.000`, RBO(p=0.9): `1.000`, rank delta: `0`, score drift: `0.000` ✅
 
-This contrast illustrates the core value of the harness: the Solr 5 → 8 boundary introduced measurable ranking drift across 7 of 8 queries, while Solr 8 → 9 (with explicitly configured ClassicSimilarity) produced zero drift — giving teams confidence their migration is safe before switching production traffic.
+### Solr 9 vs Solr 10 — stable under ClassicSimilarity on the sample corpus
+
+- All 8 queries: Jaccard: `1.000`, RBO(p=0.9): `1.000`, rank delta: `0`, score drift: `0.000` ✅
+
+This contrast illustrates the core value of the harness: the Solr 5 → 8 boundary introduced measurable ranking drift across 7 of 8 queries, while Solr 8 → 9 and Solr 9 → 10 (with explicitly configured ClassicSimilarity) produced zero drift on the sample corpus — giving teams confidence their migration is safe before switching production traffic. Results are specific to this corpus and configuration; validate your own corpus and query set before rollout.
 
 ## Drift Metrics
 
@@ -68,6 +73,8 @@ The harness reports the following metrics per query pair:
 **Avg / Max Abs Rank Delta** measures how far individual documents moved in rank position across versions.
 
 **Max Abs Normalized Score Drift** measures score distribution change normalized by the top document score, making it comparable across queries with different score magnitudes.
+
+Explain output is normalized before comparison: the child clauses of each explain node are sorted by (value, description). Lucene may list DisjunctionMax/Boolean clauses in a different order across major versions; that re-ordering is cosmetic and is not reported as drift.
 
 ## Production Use
 

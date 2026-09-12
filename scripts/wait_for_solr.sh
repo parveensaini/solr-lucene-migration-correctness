@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# wait_for_solr.sh — polls /admin/ping on all three Solr instances until
+# wait_for_solr.sh — polls /admin/ping on all Solr instances until
 # each responds 200. Call this between `up.sh` and `load.sh` so that
 # load retries don't silently swallow startup failures.
 set -euo pipefail
@@ -7,6 +7,7 @@ set -euo pipefail
 SOLR5="${SOLR5:-http://127.0.0.1:8985/solr/core1}"
 SOLR8="${SOLR8:-http://127.0.0.1:8988/solr/core1}"
 SOLR9="${SOLR9:-http://127.0.0.1:8989/solr/core1}"
+SOLR10="${SOLR10:-http://127.0.0.1:8990/solr/core1}"
 
 MAX_WAIT="${MAX_WAIT:-90}"   # seconds before giving up
 INTERVAL=3
@@ -32,8 +33,9 @@ wait_for () {
   done
 }
 
-wait_for "solr5" "$SOLR5"
-wait_for "solr8" "$SOLR8"
-wait_for "solr9" "$SOLR9"
+wait_for "solr5"  "$SOLR5"
+wait_for "solr8"  "$SOLR8"
+wait_for "solr9"  "$SOLR9"
+wait_for "solr10" "$SOLR10"
 
 echo "All Solr instances ready."

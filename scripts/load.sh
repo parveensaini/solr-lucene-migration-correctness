@@ -4,6 +4,7 @@ set -euo pipefail
 SOLR5="${SOLR5:-http://127.0.0.1:8985/solr/core1}"
 SOLR8="${SOLR8:-http://127.0.0.1:8988/solr/core1}"
 SOLR9="${SOLR9:-http://127.0.0.1:8989/solr/core1}"
+SOLR10="${SOLR10:-http://127.0.0.1:8990/solr/core1}"
 DOCS="${1:-corpus/docs.json}"
 
 post_update () {
@@ -46,4 +47,5 @@ post_update () {
 post_update "$SOLR5"
 post_update "$SOLR8"
 post_update "$SOLR9"
+post_update "$SOLR10"
 echo "Done."

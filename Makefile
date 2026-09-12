@@ -28,6 +28,9 @@ diff-8v9: venv
 diff-5v9: venv
 	. .venv/bin/activate && PAIR=5v9 python scripts/diff.py corpus/queries.json reports
 
+diff-9v10: venv
+	. .venv/bin/activate && PAIR=9v10 python scripts/diff.py corpus/queries.json reports
+
 bootstrap: reset wait load
 
 all: reset wait load diff

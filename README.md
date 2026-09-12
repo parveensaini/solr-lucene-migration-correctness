@@ -22,6 +22,7 @@ This harness includes sample drift reports for:
 - Solr 5 → Solr 8
 - Solr 5 → Solr 9
 - Solr 8 → Solr 9
+- Solr 9 → Solr 10
 
 The combined report is at `reports/sample/combined_summary.md`.
 
@@ -76,7 +77,7 @@ The same methodology was later reused during a Solr 8 to Solr 9 upgrade.
 
 The goal is to provide a repeatable way to analyze ranking drift during major search infrastructure upgrades.
 
-The public harness includes sample reports for 5→8, 5→9, and 8→9 comparisons.
+The public harness includes sample reports for 5→8, 5→9, 8→9, and 9→10 comparisons.
 
 ## Why This Approach Exists
 

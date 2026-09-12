@@ -28,3 +28,11 @@
 | 5v9 | q_filter_price_range | FAIL ❌ | 1.000 | 0.9694 | 0.60 | 0.405 |
 | 5v9 | q_brand_anker | FAIL ❌ | 1.000 | 1.0000 | 0.00 | 0.276 |
 | 5v9 | q_near_tie_stress | FAIL ❌ | 1.000 | 0.9000 | 0.22 | 0.158 |
+| 9v10 | q_basic | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_phrase | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_phrase_freq | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_usb_c | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_filter_instock | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_filter_price_range | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_brand_anker | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |
+| 9v10 | q_near_tie_stress | PASS ✅ | 1.000 | 1.0000 | 0.00 | 0.000 |

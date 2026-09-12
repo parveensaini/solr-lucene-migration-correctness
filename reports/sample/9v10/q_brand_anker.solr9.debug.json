@@ -1,0 +1,1680 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 9,
+    "params": {
+      "q": "iphone charger",
+      "defType": "edismax",
+      "df": "body",
+      "qf": "title^3 body^2 tags",
+      "fl": "id,score",
+      "q.op": "OR",
+      "fq": "brand:Anker",
+      "sort": "score desc, id asc",
+      "rows": "10",
+      "wt": "json",
+      "debug.explain.structured": "true",
+      "debugQuery": "on"
+    }
+  },
+  "response": {
+    "numFound": 6,
+    "start": 0,
+    "maxScore": 4.095487,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "1",
+        "score": 4.095487
+      },
+      {
+        "id": "9",
+        "score": 4.095487
+      },
+      {
+        "id": "11",
+        "score": 3.566369
+      },
+      {
+        "id": "7",
+        "score": 3.263454
+      },
+      {
+        "id": "5",
+        "score": 1.9580724
+      },
+      {
+        "id": "14",
+        "score": 1.7513531
+      }
+    ]
+  },
+  "debug": {
+    "rawquerystring": "iphone charger",
+    "querystring": "iphone charger",
+    "parsedquery": "+(DisjunctionMaxQuery(((body:iphone)^2.0 | (title:iphone)^3.0 | tags:iphone)) DisjunctionMaxQuery(((title:charger)^3.0 | (body:charger)^2.0 | tags:charger)))",
+    "parsedquery_toString": "+(((body:iphone)^2.0 | (title:iphone)^3.0 | tags:iphone) ((title:charger)^3.0 | (body:charger)^2.0 | tags:charger))",
+    "explain": {
+      "1": {
+        "match": true,
+        "value": 4.095487,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 2.344134,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 0.9230442,
+                "description": "weight(body:iphone in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.9230442,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.25,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 2.344134,
+                "description": "weight(title:iphone in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 2.344134,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.7472144,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 8,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.4472136,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.3053817,
+                "description": "weight(tags:iphone in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.3053817,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "match": true,
+            "value": 1.7513531,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.7513531,
+                "description": "weight(title:charger in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.7513531,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.4472136,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 0.82862324,
+                "description": "weight(body:charger in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.82862324,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.25,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 0) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "9": {
+        "match": true,
+        "value": 4.095487,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 2.344134,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.0240256,
+                "description": "weight(body:iphone in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.0240256,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.2773501,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 2.344134,
+                "description": "weight(title:iphone in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 2.344134,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.7472144,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 8,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.4472136,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.3053817,
+                "description": "weight(tags:iphone in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.3053817,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "match": true,
+            "value": 1.7513531,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.7513531,
+                "description": "weight(title:charger in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.7513531,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.4472136,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 0.9192749,
+                "description": "weight(body:charger in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.9192749,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.2773501,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 8) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "11": {
+        "match": true,
+        "value": 3.566369,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 1.3053817,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 0.7536624,
+                "description": "weight(body:iphone in 10) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.7536624,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.28867513,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.3053817,
+                "description": "weight(tags:iphone in 10) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.3053817,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "match": true,
+            "value": 2.2609873,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 2.2609873,
+                "description": "weight(title:charger in 10) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 2.2609873,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.57735026,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 0.95681167,
+                "description": "weight(body:charger in 10) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.95681167,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.28867513,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 10) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "7": {
+        "match": true,
+        "value": 3.263454,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 1.3053817,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 0.9230442,
+                "description": "weight(body:iphone in 6) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.9230442,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.25,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.3053817,
+                "description": "weight(tags:iphone in 6) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.3053817,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "match": true,
+            "value": 1.9580724,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.9580724,
+                "description": "weight(title:charger in 6) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.9580724,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.5,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(body:charger in 6) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=4.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "tf(freq=4.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 4.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.25,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 6) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "5": {
+        "match": true,
+        "value": 1.9580724,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 1.9580724,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.9580724,
+                "description": "weight(title:charger in 4) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.9580724,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.5,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 0.9192749,
+                "description": "weight(body:charger in 4) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.9192749,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.2773501,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 4) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "14": {
+        "match": true,
+        "value": 1.7513531,
+        "description": "sum of:",
+        "details": [
+          {
+            "match": true,
+            "value": 1.7513531,
+            "description": "max of:",
+            "details": [
+              {
+                "match": true,
+                "value": 1.7513531,
+                "description": "weight(title:charger in 13) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.7513531,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 3.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.3053817,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 13,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.4472136,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 0.9192749,
+                "description": "weight(body:charger in 13) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 0.9192749,
+                    "description": "score(freq=2.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 2.0,
+                        "description": "boost"
+                      },
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.4142135,
+                        "description": "tf(freq=2.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 2.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 0.2773501,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "match": true,
+                "value": 1.1718502,
+                "description": "weight(tags:charger in 13) [ClassicSimilarity], result of:",
+                "details": [
+                  {
+                    "match": true,
+                    "value": 1.1718502,
+                    "description": "score(freq=1.0), product of:",
+                    "details": [
+                      {
+                        "match": true,
+                        "value": 1.1718502,
+                        "description": "idf, computed as log((docCount+1)/(docFreq+1)) + 1 from:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 15,
+                            "description": "docFreq, number of documents containing term"
+                          },
+                          {
+                            "match": true,
+                            "value": 18,
+                            "description": "docCount, total number of documents with field"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "tf(freq=1.0), with freq of:",
+                        "details": [
+                          {
+                            "match": true,
+                            "value": 1.0,
+                            "description": "freq, occurrences of term within document"
+                          }
+                        ]
+                      },
+                      {
+                        "match": true,
+                        "value": 1.0,
+                        "description": "fieldNorm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "QParser": "ExtendedDismaxQParser",
+    "altquerystring": null,
+    "boost_queries": null,
+    "parsed_boost_queries": [],
+    "boostfuncs": null,
+    "filter_queries": [
+      "brand:Anker"
+    ],
+    "parsed_filter_queries": [
+      "brand:Anker"
+    ],
+    "timing": {
+      "time": 9.0,
+      "prepare": {
+        "time": 2.0,
+        "query": {
+          "time": 1.0
+        },
+        "facet": {
+          "time": 0.0
+        },
+        "facet_module": {
+          "time": 0.0
+        },
+        "mlt": {
+          "time": 0.0
+        },
+        "highlight": {
+          "time": 0.0
+        },
+        "stats": {
+          "time": 0.0
+        },
+        "expand": {
+          "time": 0.0
+        },
+        "terms": {
+          "time": 0.0
+        },
+        "debug": {
+          "time": 0.0
+        }
+      },
+      "process": {
+        "time": 6.0,
+        "query": {
+          "time": 0.0
+        },
+        "facet": {
+          "time": 0.0
+        },
+        "facet_module": {
+          "time": 0.0
+        },
+        "mlt": {
+          "time": 0.0
+        },
+        "highlight": {
+          "time": 0.0
+        },
+        "stats": {
+          "time": 0.0
+        },
+        "expand": {
+          "time": 0.0
+        },
+        "terms": {
+          "time": 0.0
+        },
+        "debug": {
+          "time": 5.0
+        }
+      }
+    }
+  }
+}
